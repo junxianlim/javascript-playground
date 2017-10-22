@@ -31,7 +31,7 @@ function readLine (line) {
 
 // Helper functions
 
-function arrayIsEqualToNumbersCount(array) {
+function arrayLengthMatchNumbersCount(array) {
   return array.length == numbersCount;
 }
 
@@ -57,7 +57,7 @@ function isInteger(string) {
 }
 
 function numbersCountWithinRange(num) {
-  return 2 <= num && num <= (2 * Math.pow(10,5));
+  return 2 <= num && num <= 2 * Math.pow(10,5);
 }
 
 function arrayElementsWithinRange(array) {
@@ -67,7 +67,7 @@ function arrayElementsWithinRange(array) {
 function constructArrayFromLine(line) {
   let numbers = line.split(' ').filter(x => {
     return isValidNumber(x);
-  })
+  });
   return numbers.map(x => { return Number(x); });
 }
 
@@ -76,14 +76,14 @@ function sortNumber(a,b) {
 }
 
 function findTwoHighest(array) {
-  let max = array[array.length - 1];
+  let max       = array[array.length - 1];
   let secondMax = array[array.length - 2];
   return [max, secondMax];
 }
 
 function runMaxPairwise(line) {
   let array = constructArrayFromLine(line).sort(sortNumber);
-  if (arrayIsEqualToNumbersCount(array) && arrayElementsWithinRange(array)) {
+  if (arrayLengthMatchNumbersCount(array) && arrayElementsWithinRange(array)) {
     [max, secondMax] = findTwoHighest(array);
     console.log(max * secondMax);
   }
